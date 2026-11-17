@@ -225,7 +225,7 @@ check("printed m=1 value equals 1-1/e and m=2 value equals e^-1/2+2e^-1-4e^-3/2"
       abs(rows1[0][4] - p1) < 1e-12 and abs(rows1[3][4] - p2) < 1e-12)
 
 say("-" * 76)
-say("   Recurrence on p. 21 versus the Pascal shift identity")
+say("   Recurrence on p. 24 versus the Pascal shift identity")
 ok_pascal, ok_printed_rec_on_printed, bad_printed_rec_on_true = True, True, 0
 rng = np.random.default_rng(7)
 for _ in range(400):
@@ -244,10 +244,10 @@ for _ in range(400):
     rhs_t = M_true(c, m) + (-1) ** (c[i - 1] + 1) * M_true(ci, m - i * (c[i - 1] + 1))
     bad_printed_rec_on_true += M_true(ce, m) != rhs_t
 check("Pascal shift M(e_i+c; m) = M(c; m) - M(c; m-i) for the true M (400 random cases)", ok_pascal)
-check("p.21 recurrence holds for the printed (unweighted) M (400 cases)", ok_printed_rec_on_printed)
-say(f"   p.21 recurrence fails for the true M in {bad_printed_rec_on_true}/400 cases;"
+check("p.24 recurrence holds for the printed (unweighted) M (400 cases)", ok_printed_rec_on_printed)
+say(f"   p.24 recurrence fails for the true M in {bad_printed_rec_on_true}/400 cases;"
     f" e.g. M((2);1) = {M_true((2,), 1)}, recurrence gives {M_true((1,), 1) + M_true((0,), -1)}")
-check("p.21 recurrence fails for the true M in some case", bad_printed_rec_on_true > 0)
+check("p.24 recurrence fails for the true M in some case", bad_printed_rec_on_true > 0)
 # T_i bound
 okT = True
 for m in range(1, 5):
@@ -259,7 +259,7 @@ check("T_i = E[X_i M(X;m)^2k] <= (4^k/i) c(m,k) for m<=4, k<=2, all i", okT)
 
 # ===========================================================================
 say("=" * 76)
-say("2. The binomial ratio on p. 20 (j = 1)")
+say("2. The binomial ratio on p. 23 (j = 1)")
 say("=" * 76)
 
 
@@ -299,7 +299,7 @@ check("E[X1(X1-1) M^2k] = E[M(X+2e1)^2k] = E[(M_m - 2M_{m-1} + M_{m-2})^2k] <= 1
 
 # ===========================================================================
 say("=" * 76)
-say("3. Section 2.5: the h = 2 moment L_2(m,k) = lim_q Poly_q(n,m,2;k)")
+say("3. Section 2.4: the h = 2 moment L_2(m,k) = lim_q Poly_q(n,m,2;k)")
 say("=" * 76)
 check("L_2 identity: E[(M(X;m)+M(X;m-1))^2k] = sum_eps G(m-eps), m<=4, k=1,2",
       all(abs(poisson_expect(m, lambda c, m=m, k=k: float(M_true(c, m) + M_true(c, m - 1)) ** (2 * k))
@@ -391,7 +391,7 @@ check("method recovers the known exponents 3 and 2 (k=2) within 0.3 and brackets
       abs(ex["c(m,2) [true 3]"][0] - 3) < 0.3 and abs(ex["c(m,2) [true 3]"][1] - 3) < 0.3
       and abs(ex["L_2(m,2) [true 2]"][0] - 2) < 0.3 and abs(ex["L_2(m,2) [true 2]"][1] - 2) < 0.3
       and 24 <= ex["c(m,3) [true 25]"][0] and ex["c(m,3) [true 25]"][1] <= 29)
-check("L_2(m,3): estimated exponent lies in [19, 23], far above the 13 of Section 2.5",
+check("L_2(m,3): estimated exponent lies in [19, 23], far above the 13 of Section 2.4",
       19 <= ex["L_2(m,3)"][0] and ex["L_2(m,3)"][1] <= 23)
 say(f"TOTAL FAILURES: {check.failures}")
 
@@ -444,7 +444,7 @@ h1, = ax2.plot(mS, local_slopes(L23, mS), "o-", color=colk[3], ms=3.5, lw=1.3,
 h1b, = ax2.plot(mS, local_slopes(cs3, mS), "s-", color=colk[1], ms=3, lw=1.1,
                 label=r"local exponent of $c(m,3)$ (exact)")
 h2, = ax2.axhline(19, color="k", lw=1.0, ls="--", label=r"$2^{2k-1}-4k-1=19$ (corrected)"),
-h3, = ax2.axhline(13, color="#7f7f7f", lw=1.0, ls=":", label=r"$2^{2k-1}-6k-1=13$ (Section 2.5)"),
+h3, = ax2.axhline(13, color="#7f7f7f", lw=1.0, ls=":", label=r"$2^{2k-1}-6k-1=13$ (Section 2.4)"),
 ax2.axhline(25, color=colk[1], lw=0.8, ls="-.")
 ax2.text(11.2, 25.4, "25", fontsize=7, color=colk[1], ha="right", va="bottom")
 ax2.set_xlim(2.5, 11.5)

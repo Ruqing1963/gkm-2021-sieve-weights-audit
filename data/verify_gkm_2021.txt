@@ -37,14 +37,14 @@
 [PASS] |M_printed| <= p(m), so E[M_printed^2k] <= p(m)^2k, and E[M_printed^2k] != c(m,k) for m<=4, k<=3
 [PASS] printed m=1 value equals 1-1/e and m=2 value equals e^-1/2+2e^-1-4e^-3/2
 ----------------------------------------------------------------------------
-   Recurrence on p. 21 versus the Pascal shift identity
+   Recurrence on p. 24 versus the Pascal shift identity
 [PASS] Pascal shift M(e_i+c; m) = M(c; m) - M(c; m-i) for the true M (400 random cases)
-[PASS] p.21 recurrence holds for the printed (unweighted) M (400 cases)
-   p.21 recurrence fails for the true M in 305/400 cases; e.g. M((2);1) = -2, recurrence gives -1
-[PASS] p.21 recurrence fails for the true M in some case
+[PASS] p.24 recurrence holds for the printed (unweighted) M (400 cases)
+   p.24 recurrence fails for the true M in 305/400 cases; e.g. M((2);1) = -2, recurrence gives -1
+[PASS] p.24 recurrence fails for the true M in some case
 [PASS] T_i = E[X_i M(X;m)^2k] <= (4^k/i) c(m,k) for m<=4, k<=2, all i
 ============================================================================
-2. The binomial ratio on p. 20 (j = 1)
+2. The binomial ratio on p. 23 (j = 1)
 ============================================================================
    q = 10000:
      c1 =       10: ratio = 9.965047e-01   1-c(c-3)/(2q) = 0.996500   |ratio-1|*q/c = 3.495e+00
@@ -63,7 +63,7 @@
 [PASS] at c1 = q the ratio is ~ e^{1-q} sqrt(2 pi q)
 [PASS] E[X1(X1-1) M^2k] = E[M(X+2e1)^2k] = E[(M_m - 2M_{m-1} + M_{m-2})^2k] <= 16^k c(m,k) (m<=4,k<=2)
 ============================================================================
-3. Section 2.5: the h = 2 moment L_2(m,k) = lim_q Poly_q(n,m,2;k)
+3. Section 2.4: the h = 2 moment L_2(m,k) = lim_q Poly_q(n,m,2;k)
 ============================================================================
 [PASS] L_2 identity: E[(M(X;m)+M(X;m-1))^2k] = sum_eps G(m-eps), m<=4, k=1,2
      m                     c(m,3)               L_2(m,3)        L_2/c
@@ -105,5 +105,5 @@
      c(m,3) [true 25]    : estimated exponent in [24.77, 27.90]
      L_2(m,3)            : estimated exponent in [20.42, 22.06]
 [PASS] method recovers the known exponents 3 and 2 (k=2) within 0.3 and brackets 25 for c(m,3) within [24,29]
-[PASS] L_2(m,3): estimated exponent lies in [19, 23], far above the 13 of Section 2.5
+[PASS] L_2(m,3): estimated exponent lies in [19, 23], far above the 13 of Section 2.4
 TOTAL FAILURES: 0

@@ -23,7 +23,7 @@
 \newcommand{\E}{\mathbb E}
 \newcommand{\Mp}{M^{\mathrm{pr}}}
 
-\title[Permutation, polynomial and saddle-point moments]{A note and restoration on the permutation, polynomial,
+\title[Permutation, polynomial and saddle-point moments]{Restoring the permutation, polynomial,
 and saddle-point moments in \texorpdfstring{\lq\lq Sieve weights and their smoothings\rq\rq}{"Sieve weights and their smoothings"}}
 \thanks{Code and data are archived at Zenodo, \href{https://doi.org/10.5281/zenodo.24297078}{doi:10.5281/zenodo.24297078};\\ repository: \href{https://github.com/Ruqing1963/gkm-2021-sieve-weights-audit}{github.com/Ruqing1963/gkm-2021-sieve-weights-audit}.}
 \author{Ruqing Chen}
@@ -35,17 +35,17 @@ and saddle-point moments in \texorpdfstring{\lq\lq Sieve weights and their smoot
 
 \begin{document}
 \begin{abstract}
-We check Sections~2.5, 3 and~4 (the permutation and $\mathbb F_q[t]$ analogues) of A.~Granville,
+We check Sections~2.4, 3 and~4 (the permutation and $\mathbb F_q[t]$ analogues) of A.~Granville,
 D.~Koukoulopoulos and J.~Maynard, \emph{Sieve weights and their smoothings}.
 (i) The divisor sum $M(\bc;m)$ in (3.1) omits the multiplicity $\prod_j\binom{c_j}{b_j}$. As printed,
 Proposition~3.1 fails: for $m=1$ the right-hand side is $1-e^{-1}$ for every $k$, whereas $c(1,k)$ is the
-Bell number $B_{2k}$. The proof of Theorem~1.4 inherits the unweighted formula through a recurrence on
-p.~21. We restore Proposition~3.1 with a short generating-function proof. This gives the Pascal shift
+Bell number $B_{2k}$. The proof of Theorem~1.2 inherits the unweighted formula through a recurrence on
+p.~24. We restore Proposition~3.1 with a short generating-function proof. This gives the Pascal shift
 $M(\bc+\mathbf e_i;m)=M(\bc;m)-M(\bc;m-i)$ and a two-line replacement for the end of the proof of
-Theorem~1.4. (ii) On p.~20, $\binom{q}{c_1}/(q-1)^{c_1}=\frac1{c_1!}(1+O(c_1/q))$ is claimed for
+Theorem~1.2. (ii) On p.~23, $\binom{q}{c_1}/(q-1)^{c_1}=\frac1{c_1!}(1+O(c_1/q))$ is claimed for
 $c_1\le q$. The true expansion is $\frac1{c_1!}(1-c_1(c_1-3)/(2q)+\cdots)$, and it collapses for
-$c_1\gg\sqrt q$. A quadratic Poisson moment repairs the error term, and Theorem~1.4 holds as stated.
-(iii) In the heuristic of Section~2.5, three slips lead to the exponent $2^{2k-1}-6k-1$ for the
+$c_1\gg\sqrt q$. A quadratic Poisson moment repairs the error term, and Theorem~1.2 holds as stated.
+(iii) In the heuristic of Section~2.4, three slips lead to the exponent $2^{2k-1}-6k-1$ for the
 contribution of $\theta_j\approx\frac12$ to $\mathrm{Poly}_q(n,m,2;k)$. With them corrected the exponent
 is $2^{2k-1}-4k-1$. We also prove that $\lim_{q\to\infty}\mathrm{Poly}_q(n,m,2;k)$ is a $2k$-fold mixed
 difference of the lattice-point count. Exact values give $15m^2-51m+65$ for $k=2$, and for $k=3$ an
@@ -55,18 +55,19 @@ exponent estimated at $20$--$22$, far above $13$. The qualitative conclusions of
 
 \section{Introduction}
 
-Let $\mathrm{Poly}_q(n,m;k)=q^{-n}\sum_{\deg N=n}\bigl(\sum_{M\mid N,\ \deg M=m}\mu(M)\bigr)^{2k}$. Theorem~1.4
+Let $\mathrm{Poly}_q(n,m;k)=q^{-n}\sum_{\deg N=n}\bigl(\sum_{M\mid N,\ \deg M=m}\mu(M)\bigr)^{2k}$. Theorem~1.2
 of \cite{GKM} states that $\mathrm{Poly}_q(n,m;k)=c(m,k)(1+O_k(1/q))$ for $n\ge2mk$. Here $c(m,k)$ is the
 number of tuples $(r_S)_{\emptyset\ne S\subset[2k]}$ of non-negative integers with $r_S\in\{0,1\}$ for $|S|$
 odd and $\sum_{S\ni i}r_S=m$ for each $i$. We check Section~3 (Proposition~3.1, via permutations), Section~4
-(the proof of Theorem~1.4) and the heuristic of Section~2.5.
-Page numbers refer to the arXiv version of \cite{GKM} (77 pages).
+(the proof of Theorem~1.2) and the heuristic of Section~2.4.
+Numbering and pages follow the final arXiv version v4 of \cite{GKM} (85 pages); in v1 the same items
+are Theorem 1.4, Lemma 1.5, Section 2.5 and $E_1,E_2,E_3$.
 
 Throughout, $X_1,\dots,X_m$ are independent with $X_j\sim\mathrm{Poisson}(1/j)$, and
 $\bc=(c_1,\dots,c_m)\in\mathbb Z_{\ge0}^m$. All identities were checked symbolically or by exact integer
-arithmetic, and all numbers were recomputed, by a program provided as supplementary material. Each repair
+arithmetic, and all numbers were recomputed, by the supplementary program. Each repair
 is local: the binomial weights restore Proposition~3.1, the restricted range restores the error term of
-Theorem~1.4, and the corrected exponent strengthens the conclusion of Section~2.5. Every result of
+Theorem~1.2, and the corrected exponent strengthens the conclusion of Section~2.4. Every result of
 \cite{GKM} that is used later stands.
 
 \section{Proposition 3.1 and the missing binomial weights}\label{sec:prop31}
@@ -89,14 +90,14 @@ $p(m)^{2k}$. Table~\ref{tab:mom} gives the values for $m\le4$ and $k\le3$.
 \end{itemize}
 
 The source is the count of divisors. A permutation with $c_j$ cycles of length $j$ has
-$\prod_j\binom{c_j}{b_j}$ invariant sets made of $b_j$ cycles of length $j$ (p.~18). Likewise, a polynomial
-of factorisation type $\bc$ has $\prod_j\binom{c_j}{b_j}$ squarefree divisors of that shape (p.~19). The
+$\prod_j\binom{c_j}{b_j}$ invariant sets made of $b_j$ cycles of length $j$ (p.~24). Likewise, a polynomial
+of factorisation type $\bc$ has $\prod_j\binom{c_j}{b_j}$ squarefree divisors of that shape (p.~22). The
 divisor sum is therefore
 \begin{equation}\label{eq:Mtrue}
 M(\bc;\ell)=\sum_{\substack{0\le b_j\le c_j\\ \sum_j jb_j=\ell}}(-1)^{b_1+\dots+b_m}\prod_{j=1}^m\binom{c_j}{b_j}
 =[x^\ell]\prod_{j=1}^m(1-x^j)^{c_j}.
 \end{equation}
-This is not only a misprint in (3.1). The proof of Theorem~1.4 (p.~21) writes
+This is not only a misprint in (3.1). The proof of Theorem~1.2 (p.~24) writes
 $\Mp(\mathbf e_i+\bc;m)=\Mp(\bc;m)+(-1)^{c_i+1}\Mp(\bc_i;m-i(c_i+1))$, where $\bc_i$ has $i$-th entry $0$.
 This identity holds for $\Mp$, but it fails for \eqref{eq:Mtrue}: for example, $M((2);1)=-2$, whereas the
 right side gives $-1$. In $305$ of $400$ random tests it fails.
@@ -143,7 +144,7 @@ The proof avoids permutations entirely. For $m=1$ it reduces to a classical fact
 and $\E[X_1^{2k}]=B_{2k}$ for $X_1\sim\mathrm{Poisson}(1)$ (Touchard), which is $c(1,k)$. The proof also
 confirms Remark~3.1: by exact coefficient extraction,
 $3c(m,2)=64m^3-135m^2+182m-66$ for $1\le m\le30$. Table~\ref{tab:mom} compares the two sides; Poisson sums with the weights of \eqref{eq:Mtrue}
-reproduce $c(m,k)$ to relative error $<10^{-9}$.
+match $c(m,k)$ to within $10^{-9}$.
 
 \begin{table}[ht]
 \centering\small
@@ -162,18 +163,18 @@ $m$ & $k=1$ & $k=2$ & $k=3$ & $k=1$ & $k=2$ & $k=3$\\
 \end{tabular}
 \end{table}
 
-\emph{The end of the proof of Theorem~1.4 (p.~21).} It must be shown that
+\emph{The end of the proof of Theorem~1.2 (p.~24).} It must be shown that
 $T_i:=\E[X_iM(\bX;m)^{2k}]\ll_kc(m,k)$. Since $\E[X_if(\bX)]=\frac1i\E[f(\bX+\mathbf e_i)]$ for Poisson
 variables, \eqref{eq:pascal} and $(a-b)^{2k}\le2^{2k-1}(a^{2k}+b^{2k})$ give
 \[
 T_i=\frac1i\E\bigl[(M(\bX;m)-M(\bX;m-i))^{2k}\bigr]\le\frac{2^{2k-1}}{i}\bigl(c(m,k)+c(m-i,k)\bigr)\le\frac{4^k}{i}\,c(m,k).
 \]
-Here $c(0,k)=1$, and the monotonicity of $c(\cdot,k)$ is Lemma~1.5. This replaces the argument with
-$\bc_i$ on p.~21.
+Here $c(0,k)=1$, and the monotonicity of $c(\cdot,k)$ is part of Theorem~1.1. This replaces the argument with
+$\bc_i$ on p.~24.
 
-\section{The binomial ratio on p.~20}\label{sec:ratio}
+\section{The binomial ratio on p.~23}\label{sec:ratio}
 
-For $j=1$ (so $N_1=q$), p.~20 states
+For $j=1$ (so $N_1=q$), p.~23 states
 $\binom{N_1}{c_1}(q-1)^{-c_1}=\frac1{c_1!}(1+O(c_1/q))$ for $c_1\le q$. In fact
 \[
 \frac{c_1!\binom{q}{c_1}}{(q-1)^{c_1}}=\prod_{i<c_1}\Bigl(1-\frac iq\Bigr)\Bigl(1-\frac1q\Bigr)^{-c_1}
@@ -186,14 +187,14 @@ on the scale $c_1/\sqrt q$.
 
 \begin{proposition}\label{prop:ratio}
 In Section~4 of \cite{GKM}, restrict the main-term range to the vectors $\bc$ with $c_1\le\sqrt q$
-and $\sum_{j\ge2}c_j\,(j/q^j)^{1/2}\le1$. Replace $(c_1+1)/q$ by $(c_1^2+1)/q$ in $E_1$ and $E_2$, and the
-condition $c_1>q$ by $c_1>\sqrt q$ in $E_2$ and $E_3$. Then $E_1+E_2+E_3\ll_kc(m,k)/q$, and Theorem~1.4
+and $\sum_{j\ge2}c_j\,(j/q^j)^{1/2}\le1$. Replace $(c_1+1)/q$ by $(c_1^2+1)/q$ in $R_1$ and $R_2$, and the
+condition $c_1>q$ by $c_1>\sqrt q$ in $R_2$ and $R_3$. Then $R_1+R_2+R_3\ll_kc(m,k)/q$, and Theorem~1.2
 holds as stated.
 \end{proposition}
 
 \begin{proof}
-On the new range the ratio is $\frac1{c_1!}(1+O(c_1^2/q))$. Off it, $c_1^2/q>1$, so $E_2$ is bounded as on
-p.~20. On p.~21, $E_3$ uses only $\binom{q}{c_1}\le(1-1/q)^{-q}(q-1)^{c_1}/c_1!$, which holds for all
+On the new range the ratio is $\frac1{c_1!}(1+O(c_1^2/q))$. Off it, $c_1^2/q>1$, so $R_2$ is bounded as on
+p.~23. On p.~23, $R_3$ uses only $\binom{q}{c_1}\le(1-1/q)^{-q}(q-1)^{c_1}/c_1!$, which holds for all
 $c_1$. It remains to bound $\E[X_1^2M^{2k}]=\E[X_1(X_1-1)M^{2k}]+T_1$. Applying the Poisson identity twice,
 and then \eqref{eq:pascal} twice,
 \[
@@ -204,15 +205,15 @@ The last step uses convexity with weights $\frac14,\frac12,\frac14$ and the mono
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.76\textwidth]{figures/fig_gkm_2021_audit.pdf}
+\includegraphics[width=0.71\textwidth]{figures/fig_gkm_2021_audit.pdf}
 \caption{(a) $c(m,k)$ with the weights \eqref{eq:Mtrue} (solid) and moments of the printed (3.1)
 (dashed). (b) Local exponents of the exact $L_2(m,3)$ and $c(m,3)$. Inset: the ratio of
 Section~\ref{sec:ratio} for $q=10^4$.}\label{fig:main}
 \end{figure}
 
-\section{Section 2.5: the exponent at \texorpdfstring{$\theta_j\approx\frac12$}{theta = 1/2}}\label{sec:25}
+\section{Section 2.4: the exponent at \texorpdfstring{$\theta_j\approx\frac12$}{theta = 1/2}}\label{sec:25}
 
-In the integral for $\mathrm{Poly}_q(n,m,2;k)$ (pp.~14--15, $r=1-1/m$, $\mathcal Z_q(w)=(1-w)^{-1}$) the
+In the integral for $\mathrm{Poly}_q(n,m,2;k)$ (pp.~17--18, $r=1-1/m$, $\mathcal Z_q(w)=(1-w)^{-1}$) the
 $j$-th factor is $e(-m\theta_j)r^{-m}(1+re(\theta_j))$, and the region $|\theta_j-\frac12|\le\frac1m$ is
 estimated as $m^{2^{2k-1}-6k-1}$. With $\theta_j=\frac12+w_j/m$, $|w_j|\le1$, there are three slips.
 \begin{enumerate}
@@ -239,7 +240,7 @@ Let $L_2(m,k):=\E\bigl[(M(\bX;m)+M(\bX;m-1))^{2k}\bigr]$. Then
 L_2(m,k)=\sum_{\boldsymbol\varepsilon\in\{0,1\}^{2k}}(-1)^{|\boldsymbol\varepsilon|}\,N(m-\varepsilon_1,\dots,m-\varepsilon_{2k}),
 \]
 with $N$ as in Lemma~\ref{lem:gf}. Section~4 of \cite{GKM}, corrected as above and applied to
-$M(\bc;m)+M(\bc;m-1)$, gives $\mathrm{Poly}_q(n,m,2;k)=L_2(m,k)+O_k(c(m,k)/q)$ for $n\ge2mk$.
+$M(\bc;m)+M(\bc;m-1)$, gives $\mathrm{Poly}_q(n,m,2;k)=L_2(m,k)+O_k(c(m,k)/q)$ for $n\ge2mk$; the bound for $T_i$ goes through by the same convexity argument.
 \end{proposition}
 
 \begin{proof}
@@ -258,30 +259,29 @@ second pair) gives, for $k=2,$
 L_2(m,2)=15m^2-51m+65\qquad(3\le m\le30),
 \]
 of order $m^2$, whereas both region exponents are negative ($-1$, $-5$), as the paper anticipates for small
-$k$. For $k=3$, the local exponent of $L_2(m,3)$ rises from $9.3$ at $m=3$ to $17.3$ at $m=11$
+$k$. (On p.~18, \lq\lq$\mathrm{Poly}_q(n,m,1;2)\gg m^2$\rq\rq\ is a misprint for $h=2$.) For $k=3$, the local exponent of $L_2(m,3)$ rises from $9.3$ at $m=3$ to $17.3$ at $m=11$
 (Figure~\ref{fig:main}(b)). Fitting $D+a/m+b/m^2(+c/m^3)$ to the local exponents gives $D\in[20.4,22.1]$.
-On $c(m,3)$, whose exponent is $25$, the same fits give $[24.8,27.9]$. The data are consistent with
-$2^{5}-12-1=19$ and well above $13$. The conclusion of Section~2.5 is unaffected and in fact
-strengthened. Table~\ref{tab:sum} summarises all points.
+On $c(m,3)$, whose exponent is $25$, the same fits give $[24.8,27.9]$. So the exponent is at least the corrected region value $2^{5}-12-1=19$, well above $13$. The conclusion of Section~2.4 is unaffected and in fact
+strengthened (Table~\ref{tab:sum}).
 
 \begin{table}[!ht]
 \centering\footnotesize
-\caption{Status of the points checked in \cite{GKM} (arXiv page numbers).}\label{tab:sum}
+\caption{Status of the points checked in \cite{GKM} (arXiv v4 page numbers).}\label{tab:sum}
 \begin{tabular}{lll}
 \toprule
 Location & Issue & Status after repair\\
 \midrule
-(3.1), p.~17 & weights $\prod_j\binom{c_j}{b_j}$ omitted & Prop.~3.1 true only with \eqref{eq:Mtrue} (Prop.~\ref{prop:31})\\
-Prop.~3.1, p.~18 & divisor count uses (3.1) & new proof via Lemma~\ref{lem:gf}\\
-Thm.~1.4, p.~21 & recurrence for unweighted $M$ & Pascal shift \eqref{eq:pascal}; $T_i\le4^kc(m,k)/i$\\
-Thm.~1.4, p.~20 & $1+O(c_1/q)$ for $c_1\le q$ & $O(c_1^2/q)$ for $c_1\le\sqrt q$; Thm.~1.4 holds (Prop.~\ref{prop:ratio})\\
-Rem.~3.1, p.~17 & formula for $c(m,2)$ & verified for $1\le m\le30$\\
-Sec.~2.5, pp.~14--15 & exponent $2^{2k-1}-6k-1$ & $2^{2k-1}-4k-1$ for the region; exact $L_2$ (Prop.~\ref{prop:L2})\\
+(3.1), p.~20 & weights $\prod_j\binom{c_j}{b_j}$ omitted & Prop.~3.1 true only with \eqref{eq:Mtrue} (Prop.~\ref{prop:31})\\
+Prop.~3.1, p.~21 & divisor count uses (3.1) & new proof via Lemma~\ref{lem:gf}\\
+Thm.~1.2, p.~24 & recurrence for unweighted $M$ & Pascal shift \eqref{eq:pascal}; $T_i\le4^kc(m,k)/i$\\
+Thm.~1.2, p.~23 & $1+O(c_1/q)$ for $c_1\le q$ & $O(c_1^2/q)$ for $c_1\le\sqrt q$; Thm.~1.2 holds (Prop.~\ref{prop:ratio})\\
+Rem.~3.1, p.~19 & formula for $c(m,2)$ & verified for $1\le m\le30$\\
+Sec.~2.4, pp.~17--18 & exponent $2^{2k-1}-6k-1$ & $2^{2k-1}-4k-1$ for the region; exact $L_2$ (Prop.~\ref{prop:L2})\\
 \bottomrule
 \end{tabular}
 \end{table}
 \begin{thebibliography}{9}
 \bibitem{GKM} A.~Granville, D.~Koukoulopoulos and J.~Maynard, \emph{Sieve weights and their smoothings},
-Ann.\ Sci.\ \'Ec.\ Norm.\ Sup\'er.\ (4) \textbf{54} (2021), no.~5, 1089--1177, \href{https://doi.org/10.24033/asens.2478}{doi:10.24033/asens.2478}; arXiv:1606.06781.
+Ann.\ Sci.\ \'Ec.\ Norm.\ Sup\'er.\ (4) \textbf{54} (2021), no.~5, 1089--1177, \href{https://doi.org/10.24033/asens.2478}{doi:10.24033/asens.2478}; arXiv:1606.06781v4.
 \end{thebibliography}
 \end{document}
