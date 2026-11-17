@@ -58,14 +58,16 @@ exponent estimated at $20$--$22$, far above $13$. The qualitative conclusions of
 Let $\mathrm{Poly}_q(n,m;k)=q^{-n}\sum_{\deg N=n}\bigl(\sum_{M\mid N,\ \deg M=m}\mu(M)\bigr)^{2k}$. Theorem~1.4
 of \cite{GKM} states that $\mathrm{Poly}_q(n,m;k)=c(m,k)(1+O_k(1/q))$ for $n\ge2mk$. Here $c(m,k)$ is the
 number of tuples $(r_S)_{\emptyset\ne S\subset[2k]}$ of non-negative integers with $r_S\in\{0,1\}$ for $|S|$
-odd and $\sum_{S\ni i}r_S=m$ for each $i$. Section~3 relates $c(m,k)$ to random permutations through
-Proposition~3.1, and Section~4 deduces Theorem~1.4 from it. Section~2.5 explains heuristically why
-smoothing the degree range does not bring polynomials closer to integers. We check these three parts.
+odd and $\sum_{S\ni i}r_S=m$ for each $i$. We check Section~3 (Proposition~3.1, via permutations), Section~4
+(the proof of Theorem~1.4) and the heuristic of Section~2.5.
 Page numbers refer to the arXiv version of \cite{GKM} (77 pages).
 
 Throughout, $X_1,\dots,X_m$ are independent with $X_j\sim\mathrm{Poisson}(1/j)$, and
 $\bc=(c_1,\dots,c_m)\in\mathbb Z_{\ge0}^m$. All identities were checked symbolically or by exact integer
-arithmetic, and all numbers were recomputed, by a program provided as supplementary material.
+arithmetic, and all numbers were recomputed, by a program provided as supplementary material. Each repair
+is local: the binomial weights restore Proposition~3.1, the restricted range restores the error term of
+Theorem~1.4, and the corrected exponent strengthens the conclusion of Section~2.5. Every result of
+\cite{GKM} that is used later stands.
 
 \section{Proposition 3.1 and the missing binomial weights}\label{sec:prop31}
 
@@ -119,6 +121,12 @@ $\prod_i(1-x_i^j)-1=\sum_S(-1)^{|S|}x_S^j$, and $\sum_j x_S^j/j=-\log(1-x_S)$. F
 $\sum_{|S|\,\mathrm{odd}}r_S\equiv\sum_S|S|r_S-\sum_{|S|\,\mathrm{even}}|S|r_S\equiv\sum_iv_i\pmod 2$.
 \end{proof}
 
+Combinatorially, $S$ is the set of indices $i$ whose divisor $G_i$ contains a given cycle (or irreducible
+factor), and $r_S$ is the total length assigned to $S$. A cycle of length $j$ contributes
+$\mu^{|S|}=(-1)^{|S|}$ and $x_S^j$, and summing over $j$ with the Poisson weights $1/j$ and
+exponentiating gives $(1-x_S)^{(-1)^{|S|+1}}$. For even $S$ this is $1/(1-x_S)$, so $r_S\ge0$; for odd
+$S$ it is $1-x_S$, so $r_S\in\{0,1\}$. These are exactly the constraints defining $c(m,k)$.
+
 \begin{proposition}[Proposition 3.1, restored]\label{prop:31}
 With $M$ as in \eqref{eq:Mtrue}, $c(m,k)=\E[M(\bX;m)^{2k}]$ for all $m,k\ge1$. Moreover, for $1\le i\le m$,
 \begin{equation}\label{eq:pascal}
@@ -134,13 +142,12 @@ Take $\ell_i=m$ in Lemma~\ref{lem:gf}. Then $\sum_iv_i=2km$ is even and $N(m,\do
 The proof avoids permutations entirely. For $m=1$ it reduces to a classical fact: $M((c_1);1)=-c_1$,
 and $\E[X_1^{2k}]=B_{2k}$ for $X_1\sim\mathrm{Poisson}(1)$ (Touchard), which is $c(1,k)$. The proof also
 confirms Remark~3.1: by exact coefficient extraction,
-$3c(m,2)=64m^3-135m^2+182m-66$ for $1\le m\le30$. Table~\ref{tab:mom} compares the two sides.
+$3c(m,2)=64m^3-135m^2+182m-66$ for $1\le m\le30$. Table~\ref{tab:mom} compares the two sides; Poisson sums with the weights of \eqref{eq:Mtrue}
+reproduce $c(m,k)$ to relative error $<10^{-9}$.
 
 \begin{table}[ht]
 \centering\small
-\caption{$c(m,k)$ (exact) against $\E[\Mp(\bX;m)^{2k}]$ with $\Mp$ as printed in (3.1). Truncated Poisson
-sums of $M(\bX;m)^{2k}$ with the weights of \eqref{eq:Mtrue} reproduce $c(m,k)$ to relative error
-$<10^{-9}$.}\label{tab:mom}
+\caption{$c(m,k)$ (exact) against $\E[\Mp(\bX;m)^{2k}]$ with $\Mp$ as printed in (3.1).}\label{tab:mom}
 \begin{tabular}{r rrr rrr}
 \toprule
 & \multicolumn{3}{c}{$c(m,k)$} & \multicolumn{3}{c}{$\E[\Mp(\bX;m)^{2k}]$}\\
@@ -195,22 +202,19 @@ and then \eqref{eq:pascal} twice,
 The last step uses convexity with weights $\frac14,\frac12,\frac14$ and the monotonicity of $c(\cdot,k)$.
 \end{proof}
 
-\begin{figure}[ht]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/fig_gkm_2021_audit.pdf}
-\caption{(a) $c(m,k)=\E[M(\bX;m)^{2k}]$ with the weights of \eqref{eq:Mtrue} (solid) and the moments of
-the printed (3.1) (dashed). (b) Local exponents of the exact $L_2(m,3)$ and $c(m,3)$, with $19$ and $13$
-marked. Inset: $c_1!\binom{q}{c_1}/(q-1)^{c_1}$ for $q=10^4$ against $c_1/\sqrt q$, and
-$e^{-c_1^2/(2q)}$.}\label{fig:main}
+\includegraphics[width=0.76\textwidth]{figures/fig_gkm_2021_audit.pdf}
+\caption{(a) $c(m,k)$ with the weights \eqref{eq:Mtrue} (solid) and moments of the printed (3.1)
+(dashed). (b) Local exponents of the exact $L_2(m,3)$ and $c(m,3)$. Inset: the ratio of
+Section~\ref{sec:ratio} for $q=10^4$.}\label{fig:main}
 \end{figure}
 
 \section{Section 2.5: the exponent at \texorpdfstring{$\theta_j\approx\frac12$}{theta = 1/2}}\label{sec:25}
 
-Section~2.5 writes $\mathrm{Poly}_q(n,m,h;k)$ as an integral over $[0,1]^{2k}$ with $r=1-1/m$. For $h=2$
-the $j$-th factor is $e(-m\theta_j)r^{-m}(1+re(\theta_j))$, and the zeta factors are
-$\mathcal Z_q(w)=(1-w)^{-1}$. On pp.~14--15 the authors estimate the contribution of
-$|\theta_j-\frac12|\le\frac1m$ as $m^{2^{2k-1}-6k-1}$. Write $\theta_j=\frac12+u_j=\frac12+w_j/m$ with
-$|w_j|\le1$. There are three slips.
+In the integral for $\mathrm{Poly}_q(n,m,2;k)$ (pp.~14--15, $r=1-1/m$, $\mathcal Z_q(w)=(1-w)^{-1}$) the
+$j$-th factor is $e(-m\theta_j)r^{-m}(1+re(\theta_j))$, and the region $|\theta_j-\frac12|\le\frac1m$ is
+estimated as $m^{2^{2k-1}-6k-1}$. With $\theta_j=\frac12+w_j/m$, $|w_j|\le1$, there are three slips.
 \begin{enumerate}
 \item The Taylor step expands $1+e(\theta_j)$, and omits $2\pi i$. The correct factor is
 $1+re(\theta_j)=(1-2\pi iw_j)/m+O(m^{-2})$, which does not vanish at $w_j=0$.
@@ -225,45 +229,42 @@ J_2=\int_{[-1,1]^4}\prod_{|I|\,\mathrm{even}}\frac1{|I|-2\pi iw_I}\prod_{j=1}^4e
 \]
 is $0.0482$; with the paper's factor $-2\pi iw_j$ in place of $1-2\pi iw_j$ it is $0.0434$, not $0$.
 \end{enumerate}
-After the rescaling, the region therefore contributes $\asymp m^{(2^{2k-1}-1)-2k-2k}J_k$, that is
-$m^{2^{2k-1}-4k-1}$ whenever $J_k\ne0$. This is a factor $m^{2k}$ more than stated. The cut-off
-$|w_j|\le1$ is arbitrary, however: the $w$-integral does not converge absolutely on $\mathbb R^{2k}$. A
-region estimate alone therefore does not give the order of $\mathrm{Poly}_q(n,m,2;k)$. The following
-identity does.
+So the region contributes $\asymp m^{(2^{2k-1}-1)-2k-2k}J_k=m^{2^{2k-1}-4k-1}J_k$, a factor $m^{2k}$
+more than stated. But the cut-off $|w_j|\le1$ is arbitrary (the $w$-integral is not absolutely convergent
+on $\mathbb R^{2k}$), so the order of $\mathrm{Poly}_q(n,m,2;k)$ needs the following identity.
 
 \begin{proposition}\label{prop:L2}
 Let $L_2(m,k):=\E\bigl[(M(\bX;m)+M(\bX;m-1))^{2k}\bigr]$. Then
 \[
 L_2(m,k)=\sum_{\boldsymbol\varepsilon\in\{0,1\}^{2k}}(-1)^{|\boldsymbol\varepsilon|}\,N(m-\varepsilon_1,\dots,m-\varepsilon_{2k}),
 \]
-the $2k$-fold mixed backward difference of the lattice-point count $N$ of Lemma~\ref{lem:gf} at
-$(m,\dots,m)$. By the argument of Section~4 of \cite{GKM}, with the corrections above and $M(\bc;m)$
-replaced by $M(\bc;m)+M(\bc;m-1)$, we have $\mathrm{Poly}_q(n,m,2;k)=L_2(m,k)+O_k(c(m,k)/q)$ for
-$n\ge2mk$, so $L_2(m,k)=\lim_{q\to\infty}\mathrm{Poly}_q(n,m,2;k)$.
+with $N$ as in Lemma~\ref{lem:gf}. Section~4 of \cite{GKM}, corrected as above and applied to
+$M(\bc;m)+M(\bc;m-1)$, gives $\mathrm{Poly}_q(n,m,2;k)=L_2(m,k)+O_k(c(m,k)/q)$ for $n\ge2mk$.
 \end{proposition}
 
 \begin{proof}
-By Lemma~\ref{lem:gf}, $L_2(m,k)$ is the coefficient of $x_1^m\cdots x_{2k}^m$ in
-$\prod_i(1+x_i)\,G_k(\mathbf x)$, which is the stated sum since $\sum_i(m-\varepsilon_i)\equiv|\boldsymbol\varepsilon|\pmod2$.
+Take the coefficient of $x_1^m\cdots x_{2k}^m$ in $\prod_i(1+x_i)\,G_k(\mathbf x)$ (Lemma~\ref{lem:gf}).
 \end{proof}
 
-The smooth part of $N$ is a polynomial of degree $2^{2k-1}-2k-1$. Each difference lowers the degree by one,
-which again gives $2^{2k-1}-4k-1$ for the $\theta\approx\frac12$ part if its leading coefficient is
-non-zero; lower-dimensional strata can dominate. We computed $N$ exactly by coefficient
-extraction in $G_k$, in exact arithmetic for $k\le2$ and modulo two $61$-bit primes for $k=3$, checked
-with a second pair. For $k=2$ this gives
+Thus $L_2(m,k)=\lim_{q\to\infty}\mathrm{Poly}_q(n,m,2;k)$ is the $2k$-fold mixed backward difference of $N$
+at $(m,\dots,m)$: multiplying by $1+x_i$ adds the coefficient at $v_i-1$, and the sign $(-1)^{\sum v}$
+turns this sum into $N(\mathbf v)-N(\mathbf v-\mathbf e_i)$, as $\sum_i(m-\varepsilon_i)\equiv|\boldsymbol\varepsilon|\pmod2$. Geometrically, $N(\mathbf v)$ counts the
+lattice points of a polytope with right-hand side $\mathbf v$. Up to a constant, its smooth part is the
+volume polynomial $V$, of degree $2^{2k-1}-2k-1$, and the $2k$ differences pick out
+$\partial_1\cdots\partial_{2k}V$, of degree $2^{2k-1}-4k-1$, unless it vanishes. Lower-dimensional strata
+can dominate. Exact coefficient extraction in $G_k$ (modulo two $61$-bit primes for $k=3$, checked with a
+second pair) gives, for $k=2,$
 \[
 L_2(m,2)=15m^2-51m+65\qquad(3\le m\le30),
 \]
-of order $m^2$. Both region exponents are negative here ($-1$ and $-5$), as the paper anticipates for
-small $k$. For $k=3$, the local exponent of $L_2(m,3)$ rises from $9.3$ at $m=3$ to $17.3$ at $m=11$
+of order $m^2$, whereas both region exponents are negative ($-1$, $-5$), as the paper anticipates for small
+$k$. For $k=3$, the local exponent of $L_2(m,3)$ rises from $9.3$ at $m=3$ to $17.3$ at $m=11$
 (Figure~\ref{fig:main}(b)). Fitting $D+a/m+b/m^2(+c/m^3)$ to the local exponents gives $D\in[20.4,22.1]$.
 On $c(m,3)$, whose exponent is $25$, the same fits give $[24.8,27.9]$. The data are consistent with
-$2^{5}-12-1=19$ and well above $13$. The conclusion of Section~2.5, that $\mathrm{Poly}_q(n,m,h;k)$ does
-not behave like the integer moments, is unaffected and in fact strengthened. Table~\ref{tab:sum} summarises
-the status of all points; every statement used later in \cite{GKM} survives.
+$2^{5}-12-1=19$ and well above $13$. The conclusion of Section~2.5 is unaffected and in fact
+strengthened. Table~\ref{tab:sum} summarises all points.
 
-\begin{table}[!h]
+\begin{table}[!ht]
 \centering\footnotesize
 \caption{Status of the points checked in \cite{GKM} (arXiv page numbers).}\label{tab:sum}
 \begin{tabular}{lll}
