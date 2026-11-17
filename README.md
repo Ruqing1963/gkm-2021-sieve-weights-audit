@@ -3,7 +3,7 @@
 Ruqing Chen (2026). doi:[10.5281/zenodo.24297078](https://doi.org/10.5281/zenodo.24297078)
 
 A. Granville, D. Koukoulopoulos and J. Maynard, *Sieve weights and their smoothings*, Ann. Sci. Éc. Norm. Supér.
-(4) 54 (2021), no. 5, 1089–1177; arXiv:1606.06781. This note checks Sections 2.5, 3 and 4 (the permutation and
+(4) 54 (2021), no. 5, 1089–1177, doi:[10.24033/asens.2478](https://doi.org/10.24033/asens.2478); arXiv:1606.06781. This note checks Sections 2.5, 3 and 4 (the permutation and
 F_q[t] analogues). Page numbers refer to the arXiv version (77 pages).
 
 * **Proposition 3.1.** The divisor sum (3.1) omits the multiplicity `prod_j binom(c_j, b_j)`. As printed the
